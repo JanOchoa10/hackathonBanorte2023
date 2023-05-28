@@ -1,0 +1,43 @@
+body {
+  text-align: center;
+}
+
+.circular-button {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.circular-button:hover {
+  background-color: #e80833;
+  color: white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-size: 76px; /* Ajusta el tamaño de fuente según tus necesidades */
+}
+
+.swal-confirm-button-class {
+  background-color: #e80833 !important;
+  color: white !important;
+}
+
+#buttonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh;  */
+  /* Ajusta la altura según tus necesidades */
+}
