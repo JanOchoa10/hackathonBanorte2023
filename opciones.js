@@ -35,7 +35,7 @@ $(document).ready(function () {
 
       $("#buttonsContainer").empty();
       var buttonsContainer = $("#buttonsContainer");
-      buttonsContainer.append('<div><img src="render1.jpg"></div>');
+      buttonsContainer.append('<div><img src="mapaSillas.png"></div>');
 
       setTimeout(function () {
         redirectToIndex(true, cuenta);
@@ -62,7 +62,7 @@ $(document).ready(function () {
 
       $("#buttonsContainer").empty();
       var buttonsContainer = $("#buttonsContainer");
-      buttonsContainer.append('<div><img src="render1.jpg"></div>');
+      buttonsContainer.append('<div><img src="mapaEscritorio.png"></div>');
 
       setTimeout(function () {
         redirectToIndex(true, cuenta);
