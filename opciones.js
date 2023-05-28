@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   // Agregar controlador de eventos para el botón "Aperturar nueva cuenta"
   $(document).on("click", ".circular-button", function () {
-    if ($(this).text() === "Realizar depósito") {
+    if ($(this).text() === "Cambiar un cheque") {
       $("#buttonsContainer").empty();
       var buttonsContainer = $("#buttonsContainer");
       buttonsContainer.append(
@@ -85,7 +85,13 @@ function showButtons(hasAccount) {
 
   if (hasAccount) {
     buttonsContainer.append(
-      '<div class="circular-button">Realizar depósito</div>'
+      '<div class="circular-button">Cambiar un cheque</div>'
+    );
+    buttonsContainer.append(
+      '<div class="circular-button">Seguros</div>'
+    );
+    buttonsContainer.append(
+      '<div class="circular-button">Créditos</div>'
     );
     // buttonsContainer.append(
     //   '<div class="circular-button">Obtener número en la fila</div>'

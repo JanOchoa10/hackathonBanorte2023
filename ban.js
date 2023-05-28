@@ -17,13 +17,12 @@ var mapaConsultado = getParameterByName("mapaConsultado");
 var cuenta = getParameterByName("cuenta");
 cuenta = cuenta === "true"; // Convertir a tipo booleano
 
-
 // Creamos la escena
 const banScene = new THREE.Scene();
 banScene.background = new THREE.Color("#a0a19c"); //El color del background
 
 // Creamos la cámara
-const fov = 90;
+const fov = 75;
 const aspect = 1920 / 1080;
 const near = 1.0;
 const far = 1000.0;
@@ -111,7 +110,10 @@ function loadAnimatedModelAndPlay() {
     fbx.traverse((c) => {
       c.castShadow = true;
     });
-    fbx.position.copy(new THREE.Vector3(0, 0, 0));
+    fbx.position.copy(new THREE.Vector3(100, 0, 150));
+
+    // Rotar el personaje 90 grados alrededor del eje Y
+    fbx.rotateY(-Math.PI / 2);
 
     modelBB = new THREE.Box3().setFromObject(fbx);
 
@@ -127,6 +129,11 @@ function loadAnimatedModelAndPlay() {
         idleAction = mixer.clipAction(animIdle.animations[0]);
         jogAction = mixer.clipAction(animJog.animations[0]);
 
+        // Detener la animación "jog" si está reproduciéndose
+        jogAction.stop();
+
+        // Activar la animación "idle"
+        idleAction.reset(); // Reiniciar la animación "idle" al inicio
         idleAction.play();
 
         animate();
@@ -171,6 +178,9 @@ loadModelVentanilla2();
 loadModelVentanilla3();
 loadModelVentanilla4();
 loadModelVentanilla5();
+
+//Carga de escritorio
+loadModelDesk();
 
 //Arrows
 if (mapaConsultado && cuenta) {
@@ -1216,6 +1226,41 @@ function loadModelArrow2() {
     if (mapaConsultado && !cuenta) {
       banScene.add(fbxArrow2);
     }
+    //checkCollisions() parte comentada
+  });
+}
+
+let deskBB = null;
+let fbxDesk;
+
+function loadModelDesk() {
+  const loader = new FBXLoader();
+  loader.setPath("./model/");
+  loader.load("desk.fbx", (loadedfbx7) => {
+    fbxDesk = loadedfbx7;
+    fbxDesk.scale.setScalar(13.6);
+    fbxDesk.rotateY(Math.PI / 2);
+    fbxDesk.traverse((c) => {
+      c.castShadow = true;
+    });
+    fbxDesk.position.copy(new THREE.Vector3(-80, 0, 140));
+
+    // Crear la caja de colision para el modelo animado
+    deskBB = new THREE.Box3().setFromObject(fbxDesk);
+
+    const animLoader = new FBXLoader();
+    animLoader.setPath("./model/");
+    animLoader.load("desk.fbx", (anim) => {
+      const mixer = new THREE.AnimationMixer(fbxDesk);
+      animationMixer2.push(mixer);
+      const idleAction = mixer.clipAction(anim.animations[0]);
+      idleAction.play();
+
+      checkCollisions();
+      animate();
+    });
+    banScene.add(fbxDesk);
+
     //checkCollisions() parte comentada
   });
 }
