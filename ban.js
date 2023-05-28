@@ -1207,7 +1207,7 @@ function loadModelArrow2() {
     fbxArrow2.traverse((c) => {
       c.castShadow = true;
     });
-    fbxArrow2.position.copy(new THREE.Vector3(40, 40, 130));
+    fbxArrow2.position.copy(new THREE.Vector3(-80, 30, 140));
 
     // Crear la caja de colision para el modelo animado
     arrowBB2 = new THREE.Box3().setFromObject(fbxArrow2);
