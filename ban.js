@@ -1269,7 +1269,10 @@ function loadModelDesk() {
 function checModuloCollision() {
   if (moduleBB && modelBB) {
     // Verifica si ambos tienen valores asignados
-    if (moduleBB.intersectsBox(modelBB) && (mapaConsultado == null || mapaConsultado == undefined)) {
+    if (
+      moduleBB.intersectsBox(modelBB) &&
+      (mapaConsultado == null || mapaConsultado == undefined)
+    ) {
       // console.log("Colisión con el módulo");
 
       // Obtener la URL actual
@@ -1284,6 +1287,12 @@ function checModuloCollision() {
 
       // Redireccionar a la nueva URL
       window.location.href = newUrl;
+    }
+
+    if (mapaConsultado != null && mapaConsultado != undefined) {
+      setTimeout(function () {
+        window.location.href = "index.html";
+      }, 20000);
     }
   }
 }
